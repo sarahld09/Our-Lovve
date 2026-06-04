@@ -65,11 +65,6 @@
         /* المحتوى الرئيسي */
         #main-content { display: none; opacity: 0; transition: opacity 1.5s ease; padding: 20px; }
 
-        /* جعل اليوتيوب مخفي تماماً وبدون حجم */
-        #youtube-player {
-            position: absolute; width: 0; height: 0; border: none; visibility: hidden; pointer-events: none;
-        }
-
         /* تأثير القلوب الطائرة */
         .heart {
             position: fixed; color: var(--accent-color); font-size: 20px;
@@ -123,8 +118,9 @@
         .quiz-option { background: var(--main-color); padding: 12px; margin: 10px 0; border-radius: 25px; cursor: pointer; transition: 0.2s; }
         .quiz-option:hover { background: var(--accent-color); }
 
-        .media-box { background: rgba(0,0,0,0.2); max-width: 600px; margin: 30px auto; padding: 20px; border-radius: 15px; }
-        audio { width: 100%; margin: 10px 0; }
+        .media-box { background: rgba(0,0,0,0.2); max-width: 600px; margin: 30px auto; padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .music-box { background: linear-gradient(45deg, #4d000c, #2a0006); border: 2px solid var(--accent-color); padding: 20px; border-radius: 20px; max-width: 550px; margin: 25px auto; }
+        audio { width: 100%; margin-top: 10px; }
         video { max-width: 100%; width: 500px; border-radius: 15px; border: 3px solid var(--gold-color); margin: 20px auto; }
         .couple-header-name { font-size: 3.5rem; color: var(--gold-color); font-weight: bold; text-shadow: 3px 3px 6px rgba(0,0,0,0.6); margin: 10px 0; }
     </style>
@@ -132,17 +128,11 @@
 </head>
 <body>
 
-    <!-- 📺 مشغل يوتيوب المخفي تماماً (أغنية الحب زي الوتر نانسي عجرم) -->
-    <!-- تم تفعيل التشغيل التلقائي عبر الكود بمجرد فتح القفل -->
-    <iframe id="youtube-player" src="https://www.youtube.com/embed/18f0ZCH_zOk?enablejsapi=1&controls=0&rel=0" allow="autoplay"></iframe>
-
-    <!-- شاشة الانتظار الأولى -->
     <div id="loader-screen">
         <h2>استنى شوي يعيوني... ⏳❤️</h2>
         <div class="spinner"></div>
     </div>
 
-    <!-- شاشة قفل الباسوورد -->
     <div id="lock-screen">
         <div class="login-box">
             <h2>🎉 جاهز انت يعيوني 😉✨</h2>
@@ -154,12 +144,10 @@
         </div>
     </div>
 
-    <!-- شاشة الترحيب السريعة -->
     <div id="clever-screen">
         🥰 شاااطر يااا شطورررررر 👏🎈💖
     </div>
 
-    <!-- المحتوى الأساسي للموقع -->
     <div id="main-content">
         
         <header>
@@ -172,227 +160,17 @@
             </p>
         </header>
 
-        <!-- العداد الزمني -->
+        <div class="music-box">
+            <h3 style="margin: 0; color: var(--gold-color);">🎵 أغنيتنا الرومانسية المميزة 🥰</h3>
+            <p style="font-size: 14px; margin: 5px 0 15px 0;">شغل الأغنية يا روحي وأنت بتقرأ وبتحل الألعاب 👇</p>
+            <audio controls id="bg-music">
+                <source src="https://c.top4top.io/m_3355u9g4h1.mp3" type="audio/mp3">
+                متصفحك لا يدعم تشغيل الصوت.
+            </audio>
+        </div>
+
         <div class="counter-container">
             <h3>⏳ الوقت اللي عشنّاه وعمرنا مع بعض بدأ من يوم: 13/03/2025 🥰❤️</h3>
             <div class="timer">
                 <div><span id="days">0</span><br><small>يوم 🥰</small></div>
-                <div><span id="hours">0</span><br><small>ساعة ⏰</small></div>
-                <div><span id="minutes">0</span><br><small>دقيقة 🕊️</small></div>
-                <div><span id="seconds">0</span><br><small>ثانية 💓</small></div>
-            </div>
-        </div>
-
-        <!-- الرسالة الثانية الكبيرة -->
-        <p style="font-size: 18px; max-width: 650px; margin: 30px auto; line-height: 1.8; text-align: justify; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 15px; border-left: 4px solid var(--gold-color);">
-            حبيبي حياتي امك لي هي بغلاوة امي بعرف بما قلت انك قتلي امك نتي المهم جابتك لدنيا وجابت دنيا ليا 🥺❤️ أتمنى لك سنة مليئة بالفرحة والنجاح وتحقيق كل أحلامك والله يرزقك من واسع سماه ان شاءالله ويوفقك ويعطيك كلو اضعاف مضاعفة يا عيوني لتعرف رح يكونو الي خبيهم (بمزح) 🤭 دايماً بوجود عائلتك واهلك وكل لي بتحبهم 🤲💖✨.
-        </p>
-
-        <!-- الست بطاقات المربعة التفاعلية -->
-        <h3>📸 ذكرياتنا وبطاقات حبنا السحرية (اضغط عليها لـ تلف وتشوف) 😉👇</h3>
-        <div class="cards-grid">
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">🤔 اتخيل كلمة بتذكرني فيك وفبداياتنا شو?</div>
-                    <div class="flip-card-back">💬 "كيفك"<br><span style="font-size:13px; font-weight:normal;">لانو كنت تظل تقولي كيفك زمان دايماً 🤭</span></div>
-                </div>
-            </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">✨ بتعرف شو احمل كلمة بتعجبني من عندك?</div>
-                    <div class="flip-card-back">💪 "بروتيناتي" 🥰🧬</div>
-                </div>
-            </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">🥺 بتعرف شو انت بالنسبة الي?</div>
-                    <div class="flip-card-back">❤️ حبيب قلبي ونور عيونها لسارة وروح قلبها كمان 👑</div>
-                </div>
-            </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">🌌 قد ايه بحبك بتضن توقع?</div>
-                    <div class="flip-card-back">🌎 قد اتساع السماء و البحر و كواكب ومجرات وفضاء حسيتو تعبير كتابي مهم والله هاد حجم حبي 🚀🛰️</div>
-                </div>
-            </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">👀 بتعرف انا كيف بشوفك بعيوني?</div>
-                    <div class="flip-card-back">✨ بشوفك دنيتي وحياتي وبشوفك انظف واطهر قلب بدنيا وبشوفك اطيب شخص بدنيا كلها واحن شخص الي طبعا بس 🥺❤️</div>
-                </div>
-            </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">🧐 شو محمد بنسبة لسارة يا ترا جد جد?</div>
-                    <div class="flip-card-back">🏰 انت سندي ومامني ومسندي ومملكتي الخاصة اللي بهرب الها من كل العالم 🔒💖</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- البطاقات الطويلة التفاعلية -->
-        <div class="long-card" onclick="toggleLongCard(this)">
-            <h4>😔 لما تزعل افتحها... 💔 (اضغط هنا)</h4>
-            <div class="long-content">
-                حبيبي، ما بحب أشوفك زعلانوخصوصاً إذا كنت أنا السببيمكن نختلف أو يصير بينا سوء فهم، لكن عمري ما قصدت أجرحك أو أزعلك.
-                صدقني، مكانتك عندي أكبر من أي مشكلة، وأهم من أي نقاش لأن راحة قلبك بتهمني زعلك بيأثر فيني، وابتسامتك بتفرحني. كل اللي بدي ياه إنو نكون بخير ونحل أي شيء بيناتنا سوا. مهما كان 🥺💖💐
-            </div>
-        </div>
-
-        <div class="long-card" onclick="toggleLongCard(this)">
-            <h4>💌 اذا حبيت تشوف مسج يغيرلك مودك... 🥰 (اضغط هنا)</h4>
-            <div class="long-content">
-                أنت مو بس حبيبي، أنت راحتي وابتسامتي والأمان اللي بلجأله من كل شي. كل مرة أحكي معك بحس الدنيا صارت أخف وأجمل، وكل مرة تضحك فيها بحس قلبي عم يضحك معك.
-                ما بعرف كيف قدرت تصير بهالأهمية عندي، بس بعرف إنك الشخص اللي بيفرحني من كلمة، وبيوحشني من غياب دقيقة. أنت أجمل صدفة وأغلى إنسان دخل حياتي.
-                وإذا كنت اليوم متضايقبدي منك تتذكر قديش أنت مميزوقديش في حدا قلبه متعلق فيك وبيحب تفاصيلك كلها، حتى الأشياء اللي يمكن أنت ما تنتبهلها بنفسك.
-                تعال هون... وخلي هالعيون الحلوة تضحك، وخلي هالقلب الحلو يروق، لأنك تستاهل كل الحب والدلال والدنيا الحلوة كلها. 
-                بحبك حب كبير... أكبر من الكلام، وأكبر من أي وصف 💋❤️🔥
-            </div>
-        </div>
-
-        <!-- لعبة البازل -->
-        <div class="puzzle-container">
-            <h3>🧩 هلق بدك ترتب الأرقام يا شاطر لتكتمل اللعبة! 😍</h3>
-            <div class="puzzle-board" id="puzzle-board"></div>
-            <p id="puzzle-win" style="color: lightgreen; display: none; font-weight: bold; margin-top: 15px;">🎉 شاااطر ركبت اللعبة يا عمري وحبيبي كلو مكمل مع بعض دايماً! ✨</p>
-        </div>
-
-        <!-- كويز التوقيت -->
-        <div class="quiz-container" id="quiz-box">
-            <h3>❓ اختبار المعرفة السريع والذكي 😉🔥</h3>
-            <p style="font-weight: bold; font-size: 18px;">كم فرق التوقيت بين بلدك وبلدي ؟ ⏰🗺️</p>
-            <div class="quiz-option" onclick="answerQuiz(true)">1/ مافي فرق قلوبنا على نفس توقيت دائما ❤️</div>
-            <div class="quiz-option" onclick="answerQuiz(false)">2/ ساعة كاملة وبسببها بنام متتاخر 😴</div>
-            <div class="quiz-option" onclick="answerQuiz(false)">3/ ثلاث ساعات بضبط 🤦‍♂️</div>
-            <p id="quiz-result" style="margin-top:15px; font-weight:bold;"></p>
-        </div>
-
-        <!-- صندوق الرسائل الصوتية -->
-        <div class="media-box">
-            <h3>🎤 صندوق رسائلي الصوتية الخاصة لك 🕊️🎵</h3>
-            <p style="font-size:14px;">(سجلتلك المقاطع لانو بعرف قديش بتشتاق لصوتي) 🥰</p>
-            <p>🎧 المقطع الصوتي الأول لك يا عيوني:</p>
-            <audio controls><source src="voice1.mp3" type="audio/mp3">متصفحك لا يدعم الصوت.</audio>
-            <p>🎧 المقطع الصوتي الثاني لقلبك الطيب:</p>
-            <audio controls><source src="voice2.mp3" type="audio/mp3">متصفحك لا يدعم الصوت.</audio>
-            <p>🎧 المقطع الصوتي الثالث المليء بالشوق:</p>
-            <audio controls><source src="voice3.mp3" type="audio/mp3">متصفحك لا يدعم الصوت.</audio>
-        </div>
-
-        <!-- مكان فيديو الكيكة -->
-        <div class="media-box">
-            <h3>🎂 فيديو مفاجأة عيد ميلادك (أنا والكيكة) 🥳🎈</h3>
-            <video controls><source src="cake.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video>
-        </div>
-
-        <!-- الرسالة الختامية -->
-        <footer style="margin: 50px 0; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 15px;">
-            <p style="font-size: 19px; line-height: 1.8; max-width: 650px; margin: 0 auto; text-align: justify;">
-                عيوني كل عام وانت بالف خير كل عام وانت حبيبي وحياتي كل عام وانت فرحة لقلبي كل عام وانت نور لعيوني كل عام وانت سندي ورفيق دربي ان شاءالله الله يطول بعمرك فطاعتو ويخليك الي تاج فوق راسي ويديمك حب قلبي بتمنالك هالعمر يفوت عليك بالخير و الفرحة ورزق ونجاحات بتمنى باقي اعياد ميلادك بكون جنبك وبكون قادرة اني عايدك عن قريب واحظنك وبوسك كمان كون فيه مرتك لبقية العمر ان شاءالله باذن الله يا روحها لروحي اعرف مكانتك بقلبي ومحبتي الك وعيرتي عليك وخوفي لكبير عليك من كلشي بالحياة مثل ما بخاف على عيوني بالضبط واكثر خليك بخير وخليك مبسوط بوجودي اكيد 🥰💋👑🔥🎈🎂💐💘✨💥🍭🥳<br><br>
-                <strong style="font-size: 24px; color: var(--gold-color); display: block; text-align: center;">من حبيبتك: سارة ❤️💍</strong>
-            </p>
-        </footer>
-
-    </div>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('loader-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loader-screen').style.display = 'none';
-                    document.getElementById('lock-screen').style.display = 'flex';
-                }, 500);
-            }, 2500);
-        });
-
-        function checkPassword() {
-            const passwordInput = document.getElementById('password-input').value.trim();
-            if(passwordInput === "كوجي كوجي") { 
-                
-                // 🔥 خداع النظام: تشغيل فيديو يوتيوب المخفي فوراً عند الضغط على الزر
-                const player = document.getElementById('youtube-player');
-                player.src += "&autoplay=1";
-
-                document.getElementById('lock-screen').style.display = 'none';
-                const cleverScreen = document.getElementById('clever-screen');
-                cleverScreen.style.display = 'flex';
-
-                setTimeout(() => {
-                    cleverScreen.style.display = 'none';
-                    const mainContent = document.getElementById('main-content');
-                    mainContent.style.display = 'block';
-                    setTimeout(() => mainContent.style.opacity = '1', 50);
-                    setInterval(createHeart, 300);
-                    startTimer();
-                }, 2000);
-            } else {
-                document.getElementById('error-msg').style.display = 'block';
-            }
-        }
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 6000);
-        }
-
-        function startTimer() {
-            const startDate = new Date(Date.UTC(2025, 2, 13, 13, 30, 13));
-            setInterval(() => {
-                const now = new Date();
-                const diff = now - startDate;
-                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById('hours').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                document.getElementById('minutes').innerText = Math.floor((diff / 1000 / 60) % 60);
-                document.getElementById('seconds').innerText = Math.floor((diff / 1000) % 60);
-            }, 1000);
-        }
-
-        function toggleLongCard(card) {
-            const content = card.querySelector('.long-content');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function answerQuiz(isCorrect) {
-            const result = document.getElementById('quiz-result');
-            if(isCorrect) {
-                result.innerText = "🎯 شاااطر صحييح! قلوبنا دايماً على نفس التوقيت ونفس النبضة برغم المسافات الكبيرة يا عيوني! 🥰❤️";
-                result.style.color = "#ffb703";
-            } else {
-                result.innerText = "❌ هههه لا فكر منيح يا روحي! الحب أكبر من الساعة والوقت، جرب تختار الخيار الصح 😉❤️";
-                result.style.color = "#ff4d6d";
-            }
-        }
-
-        let pieces = [1, 2, 3, 4, 5, 6, 7, 8, ""];
-        pieces.sort(() => Math.random() - 0.5);
-        const board = document.getElementById('puzzle-board');
-
-        function renderPuzzle() {
-            board.innerHTML = '';
-            pieces.forEach((p, idx) => {
-                const tile = document.createElement('div');
-                tile.classList.add('puzzle-piece');
-                tile.innerText = p;
-                if(p === "") tile.style.background = "transparent";
-                tile.onclick = () => {
-                    const emptyIdx = pieces.indexOf("");
-                    if([idx-1, idx+1, idx-3, idx+3].includes(emptyIdx)) {
-                        pieces[emptyIdx] = pieces[idx]; pieces[idx] = "";
-                        renderPuzzle();
-                    }
-                };
-                board.appendChild(tile);
-            });
-            if(JSON.stringify(pieces) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, ""])) {
-                document.getElementById('puzzle-win').style.display = 'block';
-            }
-        }
-        renderPuzzle();
-    </script>
-</body>
-</html>
+                <div><span id="hours">0</span><br
